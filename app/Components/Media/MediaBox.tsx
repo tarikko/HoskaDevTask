@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface MediaBoxProps {
@@ -14,7 +15,12 @@ const MediaBox: React.FC<MediaBoxProps> = ({ icon, link }) => {
 				rel="noopener noreferrer"
 				style={styles.link}
 			>
-				{icon}
+				<Image
+					src={icon as string}
+					alt="media icon"
+					width={50}
+					height={50}
+				/>
 			</a>
 		</div>
 	);

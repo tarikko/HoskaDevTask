@@ -2,6 +2,7 @@ import Accordion from "app/Components/Course/Accordion";
 import CourseLessons from "app/Components/Course/Accordion";
 import { fetchCourse } from "app/config/apiRoutes";
 import { Root, SingleCourse } from "app/config/types/SingeCourseType";
+import Image from "next/image";
 
 type Params = {
 	params: {
@@ -19,20 +20,22 @@ export default async function Page({ params }: Params) {
 	return (
 		<>
 			<h1>id: {params.id}</h1>
-			<div className="flex gap-5">
+			<div className="flex w-full gap-5">
 				<div className="border border-gray-300 p-5 rounded-lg">
 					<h2 className="text-xl font-semibold">Course Card</h2>
 					<p>Details about the course card...</p>
 				</div>
-				<div>
-					<h2 className="text-xl font-semibold">
+				<div className="p-2 w-full">
+					<h2 className="text-xl font-semibold text-right">
 						{course.basic_info.name}
 					</h2>
-					<p>{course.basic_info.description}</p>
+					<p className="text-right">
+						{course.basic_info.description}
+					</p>
 				</div>
 			</div>
-			<div>
-				<div className="flex flex-wrap gap-4">
+			<div className="p-2">
+				<div className="flex flex-wrap gap-4 justify-end items-center ">
 					<div className="border border-gray-300 p-5 rounded-lg w-1/3">
 						<h3 className="text-lg font-semibold">
 							{course.details.specifications.course_language}
@@ -67,71 +70,30 @@ export default async function Page({ params }: Params) {
 			</div>
 			<div>
 				<h3>ماذا ستتعلم في نهاية هذه الدورة؟</h3>
-				<div className="flex flex-wrap w-full gap-4">
-					<div className="flex flex-row w-full">
-						<div className="border border-gray-300 p-5 rounded-lg flex-1">
-							<div className="flex items-center gap-2">
-								<img
-									src="https://via.placeholder.com/50"
-									alt="Test Output 2"
-									className="w-8 h-8 object-cover"
-								/>
-								<h4 className="text-lg font-semibold">
-									{course.details.course_outputs[1].title}
-								</h4>
+				<div className="flex flex-wrap justify-center align-center w-full gap-4">
+					{Object.entries(course.details.course_outputs).map(
+						(output, index) => (
+							<div key={index} className="flex flex-row w-1/3 ">
+								<div className="border border-gray-300 p-5 rounded-lg flex-1 ">
+									<div className="flex items-center justify-end gap-2 text-right">
+										<h4 className="text-lg font-semibold text-right">
+											{output[1].title}
+										</h4>
+										<Image
+											src="/assets/images/starbadge.png"
+											alt={`Output ${index + 1}`}
+											height={50}
+											width={50}
+											className="w-8 h-8 object-cover"
+										/>
+									</div>
+									<p className="mt-2 text-right">
+										{output[1].description}
+									</p>
+								</div>
 							</div>
-							<p className="mt-2">
-								{course.details.course_outputs[1].description}
-							</p>
-						</div>
-						<div className="border border-gray-300 p-5 rounded-lg flex-1">
-							<div className="flex items-center gap-2">
-								<img
-									src="https://via.placeholder.com/50"
-									alt="Test Output 2"
-									className="w-8 h-8 object-cover"
-								/>
-								<h4 className="text-lg font-semibold">
-									{course.details.course_outputs[2].title}
-								</h4>
-							</div>
-							<p className="mt-2">
-								{course.details.course_outputs[2].description}
-							</p>
-						</div>
-					</div>
-					<div className="flex flex-row w-full">
-						<div className="border border-gray-300 p-5 rounded-lg flex-1">
-							<div className="flex items-center gap-2">
-								<img
-									src="https://via.placeholder.com/50"
-									alt="Test Output 2"
-									className="w-8 h-8 object-cover"
-								/>
-								<h4 className="text-lg font-semibold">
-									{course.details.course_outputs[3].title}
-								</h4>
-							</div>
-							<p className="mt-2">
-								{course.details.course_outputs[3].description}
-							</p>
-						</div>
-						<div className="border border-gray-300 p-5 rounded-lg flex-1">
-							<div className="flex items-center gap-2">
-								<img
-									src="https://via.placeholder.com/50"
-									alt="Test Output 2"
-									className="w-8 h-8 object-cover"
-								/>
-								<h4 className="text-lg font-semibold">
-									{course.details.course_outputs[4].title}
-								</h4>
-							</div>
-							<p className="mt-2">
-								{course.details.course_outputs[4].description}
-							</p>
-						</div>
-					</div>
+						)
+					)}
 				</div>
 				<h3>مسارات الدورة</h3>
 

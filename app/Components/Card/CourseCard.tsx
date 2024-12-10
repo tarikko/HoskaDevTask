@@ -5,6 +5,8 @@ import { Course } from "app/config/types/courseType";
 import Stars from "../Rating/Stars";
 import CustomPill from "../Pills/CustomPill";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 interface CourseCardProps {
 	name: string;
 	description: string;
@@ -37,23 +39,34 @@ const CourseCard: React.FC<CourseCardProps> = ({
 					<div>
 						<CustomPill text={course.course_level} />
 					</div>
-					<div>
+					<div className="flex justify-center gap-2">
 						<p className="text-right">
 							درس {course.course_lessons}
 						</p>
+						<Image
+							src="/assets/images/cards.png"
+							width={50}
+							height={50}
+							alt="Icon"
+							className="w-6 h-6"
+						/>
 					</div>
-					<div>
+					<div className="flex justify-center gap-2">
 						<p className="text-right">{course.course_duration}</p>
+						<Image
+							width={50}
+							height={50}
+							src="/assets/images/clock.png"
+							alt="Icon"
+							className="w-6 h-6"
+						/>
 					</div>
 				</div>
 				<div className="flex justify-center flex-row space-x-4 mt-4">
 					<div className="flex items-center">
-						<CustomButton
-							primary={true}
-							onPress={() => redirect(`/course/${course.id}`)}
-						>
-							تفاصيل
-						</CustomButton>
+						<Link href={`/course/${course.id}`}>
+							<CustomButton primary={true}>تفاصيل</CustomButton>
+						</Link>
 					</div>
 					<div className="flex items-center justify-center flex-col space-x-2">
 						<span className="text-red-500 font-bold ">
