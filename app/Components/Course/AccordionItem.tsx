@@ -1,16 +1,13 @@
-"use client";
-import { useState } from "react";
-import CustomPill from "../Pills/CustomPill";
+import React from 'react';
 
-const Accordion = ({ title, lessons, duration, children }) => {
-	const [isOpen, setIsOpen] = useState(false);
+interface AccordionItemProps {
+    title: string;
+    children: React.ReactNode;
+}
 
-	const toggleAccordion = () => {
-		setIsOpen(!isOpen);
-	};
-
-	return (
-		<div className=" mb-2">
+const AccordionItem: React.FC<AccordionItemProps> = ({ title, children }) => {
+    return (
+        <div className=" mb-2">
 			<button
 				className="w-full text-right flex justify-around px-4 py-2 "
 				onClick={toggleAccordion}
@@ -39,7 +36,7 @@ const Accordion = ({ title, lessons, duration, children }) => {
 			</button>
 			{isOpen && <div className="px-4 py-2">{children}</div>}
 		</div>
-	);
+    );
 };
 
-export default Accordion;
+export default AccordionItem;

@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
 		<footer className="bg-gray-600 text-white pt-4">
 			<div className="flex justify-center items-start flex-wrap sm:flex-nowrap">
 				<FooterSection title="تابعنا" line={true}>
-					<div className="flex gap-2 flex-wrap  justify-center">
+					<div className="flex gap-2 flex-wrap  justify-end">
 						<MediaBox
 							icon="/assets/images/facebook.png"
 							link={"#"}
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
 					</div>
 				</FooterSection>
 				<FooterSection title="تحقق من شهادتك">
-					<div className="flex justify-center items-center flex-col gap-4">
+					<div className="flex justify-start items-end flex-col gap-4">
 						<div className="flex items-center">
 							<button className="px-4 py-2 bg-yellow-500 text-white rounded-l-md hover:bg-blue-700">
 								تحقق
@@ -35,10 +35,10 @@ const Footer: React.FC = () => {
 							<input
 								type="text"
 								placeholder="أدخل رقم الشهادة"
-								className="px-4 py-2 border border-gray-300 rounded-r-md focus:outline-none"
+								className="px-4 py-2 border border-gray-300 text-black rounded-r-md focus:outline-none"
 							/>
 						</div>
-						<div className="w-full md:w-auto ">
+						<div className="w-full md:w-auto flex justify-end">
 							<Image
 								src="/assets/images/barid.jpg"
 								width={100}

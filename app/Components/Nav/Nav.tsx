@@ -1,5 +1,6 @@
 import React from "react";
 import CustomButton from "../Button/CustomButton";
+import Image from "next/image";
 
 const Nav: React.FC = () => {
 	return (
@@ -30,8 +31,10 @@ const Nav: React.FC = () => {
 					</a>
 				</div>
 				<div className="flex items-center space-x-2">
-					<img
+					<Image
 						src="/assets/images/logo.png"
+						width={50}
+						height={50}
 						alt="Logo"
 						className="h-8 w-8"
 					/>

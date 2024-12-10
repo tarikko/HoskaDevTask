@@ -5,11 +5,13 @@ interface CustomButtonProps {
 	primary?: boolean;
 	onPress: () => void;
 	children: React.ReactNode;
+	classes: string;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
 	primary = true,
 	onPress,
+	classes,
 	children,
 }) => {
 	const buttonClass = primary
@@ -17,7 +19,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 		: "bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded";
 
 	return (
-		<button className={buttonClass} onClick={onPress}>
+		<button className={`${buttonClass} ${classes}`} onClick={onPress}>
 			{children}
 		</button>
 	);
